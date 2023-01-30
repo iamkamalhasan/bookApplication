@@ -36,12 +36,12 @@ public class StoreController {
         return new ResponseEntity<>(newBook,HttpStatus.CREATED);
     }
 
-    @PutMapping("/update/{id}")
-    public ResponseEntity<Store> updateBook(@PathVariable("id") Long id, @RequestBody Store store) {
+    @PutMapping("/update/{id}/{title}/{author}/{price}")
+    public ResponseEntity<Store> updateBook(@PathVariable("id") Long id, @PathVariable("title") String title,@PathVariable("author") String author, @PathVariable("price") Double price, @RequestBody Store store) {
         Store updateBook = storeService.findBookById(id);
-        updateBook.setTitle(store.getTitle());
-        updateBook.setAuthor(store.getAuthor());
-        updateBook.setPrice(store.getPrice());
+        updateBook.setTitle(title);
+        updateBook.setAuthor(author);
+        updateBook.setPrice(price);
         storeService.addBook(updateBook);
         return  new ResponseEntity<>(updateBook,HttpStatus.OK);
     }

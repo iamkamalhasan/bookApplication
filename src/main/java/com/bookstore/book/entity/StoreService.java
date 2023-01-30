@@ -22,7 +22,7 @@ public class StoreService {
     }
 
     public Store findBookById(Long id) {
-        return storeRepo.findById(id).orElseThrow(() -> new BookNotFoundException("Book with id " + id + "not found!"));
+        return storeRepo.findById(id).orElseThrow(() -> new BookNotFoundException("Book with id " + id + " not found!"));
     }
 
     public void deleteBook(Long id) {
